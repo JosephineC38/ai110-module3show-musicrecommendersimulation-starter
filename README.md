@@ -35,6 +35,44 @@ Real-world recommendations can varying but typically it's a combination of colla
        + w_energy · energy_proximity
        + w_acoustic · acoustic_fit, where each component is multipied by a weight based on the personality of the recommender. I choose which songs to recommend based on which songs scored higher, the closer to 1 the better. However, it will prioritize songs based on content-based filtering than collaborative filtering.
 
+After Phase 2, my finalized "Algorithm Recipe" is 
+┌─────────────────────────────────────────────────────────────────────┐
+│                     🎵 ALGORITHM RECIPE                              │
+│         (additive point scoring · max ≈ 7.0 · higher = better)      │
+└─────────────────────────────────────────────────────────────────────┘
+
+   USER PROFILE                         SONG
+   ┌──────────────────┐                 ┌──────────────────┐
+   │ favorite_genre   │                 │ genre            │
+   │ favorite_mood    │  ── compare ──▶ │ mood             │
+   │ target_energy    │                 │ energy           │
+   │ likes_acoustic   │                 │ acousticness     │
+   └──────────────────┘                 └──────────────────┘
+             │                                    │
+             └─────────────────┬──────────────────┘
+                               ▼
+        ┌──────────────────────────────────────────────┐
+        │  + GENRE     exact = +2.0 | family = +1.0     │
+        │  + MOOD      exact = +2.0 | family = +1.0     │
+        │  + ENERGY    +2.0 × (1 − |song − target|)     │
+        │  + ACOUSTIC  fit  = +1.0                       │
+        └──────────────────────────────────────────────┘
+                               ▼
+                    ╔══════════════════════╗
+                    ║   TOTAL SCORE (0–7)  ║
+                    ╚══════════════════════╝
+                               ▼
+              sort all songs  ▼  descending by score
+                               ▼
+                    ┌──────────────────────┐
+                    │  RETURN TOP k SONGS  │
+                    └──────────────────────┘
+
+FAMILY = same-vibe half credit:
+   genre:  lofi ≈ ambient ≈ jazz ≈ chillhop ≈ classical
+   mood:   chill ≈ relaxed ≈ focused ≈ laid-back
+
+This is based off a user profile that enjoys chili lofi music with a low energy and tempo. Some potential biases is mainstream songs biases, if a song is popular it will only be recomeded because it is popular and reinforces existing taste. Futhermore, genres might be incorrectly scored like country, which is all or nothing. Additonally, there's my own view of what's considered chili lofi, which may lead me incorrectly assume some songs aren't lofi. 
 
 ---
 
