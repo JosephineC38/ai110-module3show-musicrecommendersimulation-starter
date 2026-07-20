@@ -120,6 +120,142 @@ Loaded songs: 17
       - electronic/produced texture match (+1.0)
 ====================================================
 
+## Sample Recommendation Output with multiple profiles
+Loaded songs: 17
+
+====================================================
+  TOP RECOMMENDATIONS - High-Energy Pop
+  for genre=pop | mood=happy | energy=0.9 | acoustic=False
+====================================================
+
+ 1. Sunrise City  -  Neon Echo
+    Score: 6.84
+    Reasons:
+      - genre match: pop (+2.0)
+      - mood match: happy (+2.0)
+      - energy fit: 0.82 vs 0.90 (+1.84)
+      - electronic/produced texture match (+1.0)
+
+ 2. Rooftop Lights  -  Indigo Parade
+    Score: 5.72
+    Reasons:
+      - related genre: indie pop ~ pop (+1.0)
+      - mood match: happy (+2.0)
+      - energy fit: 0.76 vs 0.90 (+1.72)
+      - electronic/produced texture match (+1.0)
+
+ 3. Gym Hero  -  Max Pulse
+    Score: 4.94
+    Reasons:
+      - genre match: pop (+2.0)
+      - energy fit: 0.93 vs 0.90 (+1.94)
+      - electronic/produced texture match (+1.0)
+
+ 4. Pulse Reactor  -  Delta Frequency
+    Score: 3.90
+    Reasons:
+      - similar mood: euphoric ~ happy (+1.0)
+      - energy fit: 0.95 vs 0.90 (+1.90)
+      - electronic/produced texture match (+1.0)
+
+ 5. Concrete Verses  -  Crown Static
+    Score: 3.76
+    Reasons:
+      - similar mood: confident ~ happy (+1.0)
+      - energy fit: 0.78 vs 0.90 (+1.76)
+      - electronic/produced texture match (+1.0)
+
+====================================================
+
+====================================================
+  TOP RECOMMENDATIONS - Chill Lofi
+  for genre=lofi | mood=chill | energy=0.35 | acoustic=True
+====================================================
+
+ 1. Library Rain  -  Paper Lanterns
+    Score: 7.00
+    Reasons:
+      - genre match: lofi (+2.0)
+      - mood match: chill (+2.0)
+      - energy fit: 0.35 vs 0.35 (+2.00)
+      - acoustic texture match (+1.0)
+
+ 2. Midnight Coding  -  LoRoom
+    Score: 6.86
+    Reasons:
+      - genre match: lofi (+2.0)
+      - mood match: chill (+2.0)
+      - energy fit: 0.42 vs 0.35 (+1.86)
+      - acoustic texture match (+1.0)
+
+ 3. Focus Flow  -  LoRoom
+    Score: 5.90
+    Reasons:
+      - genre match: lofi (+2.0)
+      - similar mood: focused ~ chill (+1.0)
+      - energy fit: 0.40 vs 0.35 (+1.90)
+      - acoustic texture match (+1.0)
+
+ 4. Spacewalk Thoughts  -  Orbit Bloom
+    Score: 5.86
+    Reasons:
+      - related genre: ambient ~ lofi (+1.0)
+      - mood match: chill (+2.0)
+      - energy fit: 0.28 vs 0.35 (+1.86)
+      - acoustic texture match (+1.0)
+
+ 5. Coffee Shop Stories  -  Slow Stereo
+    Score: 4.96
+    Reasons:
+      - related genre: jazz ~ lofi (+1.0)
+      - similar mood: relaxed ~ chill (+1.0)
+      - energy fit: 0.37 vs 0.35 (+1.96)
+      - acoustic texture match (+1.0)
+
+====================================================
+
+====================================================
+  TOP RECOMMENDATIONS - Deep Intense Rock
+  for genre=rock | mood=intense | energy=0.9 | acoustic=False
+====================================================
+
+ 1. Storm Runner  -  Voltline
+    Score: 6.98
+    Reasons:
+      - genre match: rock (+2.0)
+      - mood match: intense (+2.0)
+      - energy fit: 0.91 vs 0.90 (+1.98)
+      - electronic/produced texture match (+1.0)
+
+ 2. Gym Hero  -  Max Pulse
+    Score: 4.94
+    Reasons:
+      - mood match: intense (+2.0)
+      - energy fit: 0.93 vs 0.90 (+1.94)
+      - electronic/produced texture match (+1.0)
+
+ 3. Iron Verdict  -  Ashfall
+    Score: 4.86
+    Reasons:
+      - related genre: metal ~ rock (+1.0)
+      - similar mood: aggressive ~ intense (+1.0)
+      - energy fit: 0.97 vs 0.90 (+1.86)
+      - electronic/produced texture match (+1.0)
+
+ 4. Pulse Reactor  -  Delta Frequency
+    Score: 2.90
+    Reasons:
+      - energy fit: 0.95 vs 0.90 (+1.90)
+      - electronic/produced texture match (+1.0)
+
+ 5. Sunrise City  -  Neon Echo
+    Score: 2.84
+    Reasons:
+      - energy fit: 0.82 vs 0.90 (+1.84)
+      - electronic/produced texture match (+1.0)
+
+====================================================
+
 ## Getting Started
 
 ### Setup

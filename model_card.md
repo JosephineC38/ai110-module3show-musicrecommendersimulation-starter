@@ -71,6 +71,10 @@ Prompts:
 - Ways the scoring might unintentionally favor some users  
 
 ---
+Since the system has no memory of what songs the user has previously played, it can't suggest better songs. For example, if the user hates a certain lofi artist while having a lofi profile, the system has no way of knowing. It's worse if that lofi artist is popular, as the system will keep recommending it regardless. It also can't learn the taste of users and
+what style of lofi they might prefer like ones with cacthy or sad lyrics. 
+
+
 
 ## 7. Evaluation  
 
@@ -86,6 +90,8 @@ Prompts:
 No need for numeric metrics unless you created some.
 
 ---
+I tested the user profiles of High-Energy Pop, Chill Lofi, and Deep Intense Rock. I was mainly looking for repeating songs between the profiles as they were pretty different. The only songs in common were Sunrise City between High-Energy Pop and Intense Rock, althought they had different rankings. What surpised me was how low the scores were for Deep Intense Rock compared to the other two profiles, which never went below a 3. I compared the differences in energy and mood between the profiles.
+As for the profiles themseleves, High-Energy Pop prefers the pop genre with a higher energy and a happy mood. Chill Lofi likes the genres lofi, jazz, and ambient combined with a lower energy and a more chill mood. Deep Intense Rock wants the genres rock and metal with a higher energy and more intense mood.  
 
 ## 8. Future Work  
 

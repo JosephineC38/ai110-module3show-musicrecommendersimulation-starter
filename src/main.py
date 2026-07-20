@@ -22,21 +22,72 @@ except ModuleNotFoundError:
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SONGS_CSV = os.path.join(BASE_DIR, "data", "songs.csv")
 
+# ---------------------------------------------------------------------------
+# User taste profiles
+# Each profile is a preference dictionary the scorer reads (see score_song):
+#   genre          -> favorite genre (string)
+#   mood           -> favorite mood (string)
+#   energy         -> target energy 0.0 (calm) .. 1.0 (high)
+#   likes_acoustic -> True for acoustic textures, False for electronic/produced
+# Three distinct listeners so we can see how the recommender behaves for each.
+# ---------------------------------------------------------------------------
+PROFILES = {
+    "High-Energy Pop": {
+        "genre": "pop",
+        "mood": "happy",
+        "energy": 0.9,
+        "likes_acoustic": False,
+    },
+    "Chill Lofi": {
+        "genre": "lofi",
+        "mood": "chill",
+        "energy": 0.35,
+        "likes_acoustic": True,
+    },
+    "Deep Intense Rock": {
+        "genre": "rock",
+        "mood": "intense",
+        "energy": 0.9,
+        "likes_acoustic": False,
+    },
+}
 
-def main() -> None:
-    songs = load_songs(SONGS_CSV)
-    print(f"Loaded songs: {len(songs)}")
+# ---------------------------------------------------------------------------
+# Adversarial / edge-case profiles
+# These are deliberately "unfair" inputs meant to stress the scoring logic and
+# reveal where it behaves in surprising ways. Each comment states the trick and
+# the behavior we expect it to expose.
+# ---------------------------------------------------------------------------
+ADVERSARIAL_PROFILES = {
+    # Empty profile: no keys at all. score_song falls back to its defaults
+    # (genre="", mood="", energy=0.5, likes_acoustic=False), so nobody matches
+    # genre or mood and the ranking is driven purely by "closest to mid energy +
+    # electronic texture." Reveals the recommender's built-in default bias.
+    "Empty Profile": {},
+    # Unknown taxonomy: "polka" and "sad" don't exist in GENRE_GROUPS/MOOD_GROUPS
+    # (note "sad" is NOT recognized as the same family as "melancholic"), so both
+    # earn zero credit -- not even family half-credit. Only energy + acoustic
+    # count. Shows how vocabulary gaps quietly degrade to generic results.
+    "Unknown Taxonomy": {
+        "genre": "polka",
+        "mood": "sad",
+        "energy": 0.5,
+        "likes_acoustic": False,
+    },
+}
 
-    # Starter example profile
-    user_prefs = {"genre": "pop", "mood": "happy", "energy": 0.8}
 
+def print_recommendations(name: str, user_prefs: dict, songs: list) -> None:
+    """Score the catalog for one profile and print a clean, ranked list."""
     recommendations = recommend_songs(user_prefs, songs, k=5)
 
-    # ---- Clean terminal layout ---------------------------------------------
+    # Use .get() so headers still render for sparse/edge-case profiles.
     print("\n" + "=" * 52)
-    print("  TOP RECOMMENDATIONS")
-    print(f"  for genre={user_prefs['genre']} | "
-          f"mood={user_prefs['mood']} | energy={user_prefs['energy']}")
+    print(f"  TOP RECOMMENDATIONS - {name}")
+    print(f"  for genre={user_prefs.get('genre', '(none)')} | "
+          f"mood={user_prefs.get('mood', '(none)')} | "
+          f"energy={user_prefs.get('energy', 0.5)} | "
+          f"acoustic={user_prefs.get('likes_acoustic', False)}")
     print("=" * 52)
 
     for rank, (song, score, explanation) in enumerate(recommendations, start=1):
@@ -47,6 +98,16 @@ def main() -> None:
             print(f"      - {reason}")
 
     print("\n" + "=" * 52)
+
+
+def main() -> None:
+    songs = load_songs(SONGS_CSV)
+    print(f"Loaded songs: {len(songs)}")
+
+    # Only the real listener profiles run here. The edge cases in
+    # ADVERSARIAL_PROFILES are kept for manual testing, not the normal run.
+    for name, user_prefs in PROFILES.items():
+        print_recommendations(name, user_prefs, songs)
 
 
 if __name__ == "__main__":
