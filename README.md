@@ -29,6 +29,13 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+Each song includes its id, title, artist, genre, energy, tempo_bpm, valence, danceability, and acousticness. My UserProfile will store a user's favorite genre, mood, target energy, and acousticness likes to best determine what they want to hear. 
+Real-world recommendations can varying but typically it's a combination of collaborative filtering (other users' behavior) and content-based filtering (songs similar to the current attributes). It lessens both methods' weaknesses while providing a different view for both. My Recommender computes a score based on the closeness to user's taste profile from a number between 0 and 1. The score formula is score =  w_genre  · genre_match
+       + w_mood   · mood_match
+       + w_energy · energy_proximity
+       + w_acoustic · acoustic_fit, where each component is multipied by a weight based on the personality of the recommender. I choose which songs to recommend based on which songs scored higher, the closer to 1 the better. However, it will prioritize songs based on content-based filtering than collaborative filtering.
+
+
 ---
 
 ## Getting Started
