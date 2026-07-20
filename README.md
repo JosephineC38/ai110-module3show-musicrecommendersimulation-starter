@@ -74,7 +74,51 @@ FAMILY = same-vibe half credit:
 
 This is based off a user profile that enjoys chili lofi music with a low energy and tempo. Some potential biases is mainstream songs biases, if a song is popular it will only be recomeded because it is popular and reinforces existing taste. Futhermore, genres might be incorrectly scored like country, which is all or nothing. Additonally, there's my own view of what's considered chili lofi, which may lead me incorrectly assume some songs aren't lofi. 
 
----
+## Sample Recommendation Output
+Loaded songs: 17
+
+====================================================
+  TOP RECOMMENDATIONS
+  for genre=pop | mood=happy | energy=0.8
+====================================================
+
+ 1. Sunrise City  -  Neon Echo
+    Score: 6.96
+    Reasons:
+      - genre match: pop (+2.0)
+      - mood match: happy (+2.0)
+      - energy fit: 0.82 vs 0.80 (+1.96)
+      - electronic/produced texture match (+1.0)
+
+ 2. Rooftop Lights  -  Indigo Parade
+    Score: 5.92
+    Reasons:
+      - related genre: indie pop ~ pop (+1.0)
+      - mood match: happy (+2.0)
+      - energy fit: 0.76 vs 0.80 (+1.92)
+      - electronic/produced texture match (+1.0)
+
+ 3. Gym Hero  -  Max Pulse
+    Score: 4.74
+    Reasons:
+      - genre match: pop (+2.0)
+      - energy fit: 0.93 vs 0.80 (+1.74)
+      - electronic/produced texture match (+1.0)
+
+ 4. Concrete Verses  -  Crown Static
+    Score: 3.96
+    Reasons:
+      - similar mood: confident ~ happy (+1.0)
+      - energy fit: 0.78 vs 0.80 (+1.96)
+      - electronic/produced texture match (+1.0)
+
+ 5. Night Drive Loop  -  Neon Echo
+    Score: 3.90
+    Reasons:
+      - related genre: synthwave ~ pop (+1.0)
+      - energy fit: 0.75 vs 0.80 (+1.90)
+      - electronic/produced texture match (+1.0)
+====================================================
 
 ## Getting Started
 
