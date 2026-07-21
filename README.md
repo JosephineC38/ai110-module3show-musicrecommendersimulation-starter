@@ -29,11 +29,14 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+
+Real-world recommendations can varying but typically it's a combination of collaborative filtering (other users' behavior) and content-based filtering (songs similar to the current attributes like genre and mood). It lessens both methods' weaknesses while providing a different view for both. It uses the user's history as input data to make predications on possible songs that the user might like.
+
 Each song includes its id, title, artist, genre, energy, tempo_bpm, valence, danceability, and acousticness. My UserProfile will store a user's favorite genre, mood, target energy, and acousticness likes to best determine what they want to hear. 
-Real-world recommendations can varying but typically it's a combination of collaborative filtering (other users' behavior) and content-based filtering (songs similar to the current attributes). It lessens both methods' weaknesses while providing a different view for both. My Recommender computes a score based on the closeness to user's taste profile from a number between 0 and 1. The score formula is score =  w_genre  · genre_match
+My Recommender computes a score based on the closeness to user's taste profile from a number between 0 and 1. The score formula is score =  w_genre  · genre_match
        + w_mood   · mood_match
        + w_energy · energy_proximity
-       + w_acoustic · acoustic_fit, where each component is multipied by a weight based on the personality of the recommender. I choose which songs to recommend based on which songs scored higher, the closer to 1 the better. However, it will prioritize songs based on content-based filtering than collaborative filtering.
+       + w_acoustic · acoustic_fit, where each component is multipied by a weight based on the personality of the recommender. I choose which songs to recommend based on which songs scored higher, the closer to 1 the better. However, it will prioritize songs based on content-based filtering than collaborative filtering along with considering the user's history of liked songs.
 
 After Phase 2, my finalized "Algorithm Recipe" is 
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -74,50 +77,6 @@ FAMILY = same-vibe half credit:
 
 This is based off a user profile that enjoys chili lofi music with a low energy and tempo. Some potential biases is mainstream songs biases, if a song is popular it will only be recomeded because it is popular and reinforces existing taste. Futhermore, genres might be incorrectly scored like country, which is all or nothing. Additonally, there's my own view of what's considered chili lofi, which may lead me incorrectly assume some songs aren't lofi. 
 
-## Sample Recommendation Output
-Loaded songs: 17
-
-====================================================
-  TOP RECOMMENDATIONS
-  for genre=pop | mood=happy | energy=0.8
-====================================================
-
- 1. Sunrise City  -  Neon Echo
-    Score: 6.96
-    Reasons:
-      - genre match: pop (+2.0)
-      - mood match: happy (+2.0)
-      - energy fit: 0.82 vs 0.80 (+1.96)
-      - electronic/produced texture match (+1.0)
-
- 2. Rooftop Lights  -  Indigo Parade
-    Score: 5.92
-    Reasons:
-      - related genre: indie pop ~ pop (+1.0)
-      - mood match: happy (+2.0)
-      - energy fit: 0.76 vs 0.80 (+1.92)
-      - electronic/produced texture match (+1.0)
-
- 3. Gym Hero  -  Max Pulse
-    Score: 4.74
-    Reasons:
-      - genre match: pop (+2.0)
-      - energy fit: 0.93 vs 0.80 (+1.74)
-      - electronic/produced texture match (+1.0)
-
- 4. Concrete Verses  -  Crown Static
-    Score: 3.96
-    Reasons:
-      - similar mood: confident ~ happy (+1.0)
-      - energy fit: 0.78 vs 0.80 (+1.96)
-      - electronic/produced texture match (+1.0)
-
- 5. Night Drive Loop  -  Neon Echo
-    Score: 3.90
-    Reasons:
-      - related genre: synthwave ~ pop (+1.0)
-      - energy fit: 0.75 vs 0.80 (+1.90)
-      - electronic/produced texture match (+1.0)
 ====================================================
 
 ## Sample Recommendation Output with multiple profiles
@@ -303,6 +262,50 @@ Paste a sample of your recommender's output here as a text block so a reader can
 #   2. ...
 #   3. ...
 ```
+
+Loaded songs: 17
+
+====================================================
+  TOP RECOMMENDATIONS
+  for genre=pop | mood=happy | energy=0.8
+====================================================
+
+ 1. Sunrise City  -  Neon Echo
+    Score: 6.96
+    Reasons:
+      - genre match: pop (+2.0)
+      - mood match: happy (+2.0)
+      - energy fit: 0.82 vs 0.80 (+1.96)
+      - electronic/produced texture match (+1.0)
+
+ 2. Rooftop Lights  -  Indigo Parade
+    Score: 5.92
+    Reasons:
+      - related genre: indie pop ~ pop (+1.0)
+      - mood match: happy (+2.0)
+      - energy fit: 0.76 vs 0.80 (+1.92)
+      - electronic/produced texture match (+1.0)
+
+ 3. Gym Hero  -  Max Pulse
+    Score: 4.74
+    Reasons:
+      - genre match: pop (+2.0)
+      - energy fit: 0.93 vs 0.80 (+1.74)
+      - electronic/produced texture match (+1.0)
+
+ 4. Concrete Verses  -  Crown Static
+    Score: 3.96
+    Reasons:
+      - similar mood: confident ~ happy (+1.0)
+      - energy fit: 0.78 vs 0.80 (+1.96)
+      - electronic/produced texture match (+1.0)
+
+ 5. Night Drive Loop  -  Neon Echo
+    Score: 3.90
+    Reasons:
+      - related genre: synthwave ~ pop (+1.0)
+      - energy fit: 0.75 vs 0.80 (+1.90)
+      - electronic/produced texture match (+1.0)
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
 
